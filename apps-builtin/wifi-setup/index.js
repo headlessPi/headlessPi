@@ -12,6 +12,16 @@ var subApp = function(){
       });
     });
 
+    router.get('/status', function(req, res) {
+      wifiConfig.getStatus(function(err, status){
+        if(!err){
+          res.json(status);
+        }else{
+          res.sendStatus(500);
+        }
+      });
+    });
+
     router.post('/configure', function(req, res) {
       wifiConfig.joinAccessPoint(req.body.ssid, req.body.password, (err) => {
         console.log(err);

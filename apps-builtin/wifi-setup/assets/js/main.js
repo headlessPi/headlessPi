@@ -29,7 +29,6 @@ var ui = function(){
       var list = document.getElementById('apList');
       list.disabled = false;
       list.innerHTML = menu;
-      console.log(res);
     });
   }
 
@@ -62,10 +61,18 @@ var ui = function(){
     })
   }
 
+  var loadStatus = function(){
+    getJSON('status', function(status){
+      var statusDiv = document.getElementById('status');
+      statusDiv.innerHTML = "IP Address: " + status.ifstatus.ipv4_address + '<br>Network: ' + status.iwstatus.ssid;
+    });
+  }
+
   setupRefresh();
   setupJoin();
   loadAccessPoints();
-  loadCurrentNetwork();
+  loadStatus();
+  window.setInterval(loadStatus, 5000);
 }
 
 document.addEventListener("DOMContentLoaded", ui);

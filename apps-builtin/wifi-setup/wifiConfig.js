@@ -1,6 +1,8 @@
 var iwlist = require('wireless-tools/iwlist');
-var wpa_supplicant = require('wireless-tools/wpa_supplicant');
 var ifconfig = require('wireless-tools/ifconfig');
+var iwconfig = require('wireless-tools/iwconfig');
+var WPAConf = require('wpa-supplicant-conf').WPAConf;
+var child_process = require('child_process');
 
 var wifiConfig = function(){
   this.listAccessPoints = function(cb){
@@ -8,25 +10,22 @@ var wifiConfig = function(){
       cb(err, networks);
     });
   }
+
   this.joinAccessPoint = function(ssid, password, cb){
-    var options = {
-      interface: 'wlan0',
-      ssid: ssid,
-      passphrase: password,
-      driver: 'nl80211,wext'
-    };
-    wpa_supplicant.disable('wlan0', (err) => {
-      if(err) console.log(err);
-      wpa_supplicant.enable(options, function(err) {
-        if(err) console.log(err);
-        cb(err);   // connected to the wireless network
+    var wpaconf = new WPAConf('/etc/wpa_supplicant/wpa_supplicant.conf');
+    wpaconf.addAndSave(ssid, password).then(() => {
+      child_process.exec('wpa_cli reconfigure', (res) => {
+        cb();
       });
-    });
+    })
   }
+
   this.getStatus = function(cb){
-    ifconfig.status('eth0', function(err, status) {
-      console.log(status);
-      cb(status);
+    ifconfig.status('wlan0', function(err, ifstatus) {
+      if (err) return cb(err);
+      iwconfig.status('wlan0', function(err, iwstatus){
+        cb(err, {ifstatus: ifstatus, iwstatus: iwstatus});
+      });
     });
   }
 }
