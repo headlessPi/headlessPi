@@ -1,15 +1,16 @@
+var Installer = require('./installer').Installer;
+var installer = new Installer();
+
+
 var subApp = function(){
   this.setup = function(router){
-    router.get('/', function(req, res) {
-      res.send("root of sub App");
-    });
-    router.get('/foo', function(req, res) {
-      res.send("foo of sub App");
+    router.post('/manualInstall', function(req, res) {
+      installer.installApp(req.body.repository, (err) => {
+        res.sendStatus(err ? 500 : 200);
+      });
     });
   }
-  this.staticFolder = function(){
-  
-  }
+  this.staticFolder = 'assets';
   return this;
 }
 

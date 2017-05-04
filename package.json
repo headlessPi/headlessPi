@@ -28,8 +28,10 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "github": "^9.2.0",
     "glob": "^7.1.1",
     "handlebars": "^4.0.8",
+    "simple-git": "^1.70.0",
     "wireless-tools": "^0.19.0",
     "wpa-supplicant-conf": "^0.2.0"
   }
