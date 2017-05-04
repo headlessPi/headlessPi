@@ -1,0 +1,7 @@
+{
+  "name": "App Manager",
+  "path": "app-manager",
+  "type": "js",
+  "entry": "index.js",
+  "category": "admin"
+}

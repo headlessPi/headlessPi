@@ -1,0 +1,7 @@
+{
+  "name": "WiFi Setup",
+  "path": "wifi-setup",
+  "type": "js",
+  "entry": "index.js",
+  "category": "admin"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Update",
+  "path": "update",
+  "type": "js",
+  "entry": "index.js",
+  "category": "admin"
+}

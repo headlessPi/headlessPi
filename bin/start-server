@@ -1,0 +1,6 @@
+#!/usr/bin/env node
+
+var headlessPi = require('../lib/index.js').headlessPi;
+var app = new headlessPi();
+
+app.start();
