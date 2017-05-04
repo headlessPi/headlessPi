@@ -24,7 +24,7 @@ var ui = function(){
     getJSON('accesspoints', function(res){
       var menu = '';
       for(var i=0; i<res.accesspoints.length; i++){
-        menu += '<option value="' + res.accesspoints[i].name + '">' + res.accesspoints[i].name + (res.accesspoints[i].encryption ? ' &#x1f512;' : '') + '</option>';
+        menu += '<option value="' + res.accesspoints[i].ssid + '">' + res.accesspoints[i].ssid + (res.accesspoints[i].security !== 'open' ? ' &#x1f512;' : '') + '</option>';
       }
       var list = document.getElementById('apList');
       list.disabled = false;
@@ -44,35 +44,29 @@ var ui = function(){
       return false;
     })
   }
-  
-  var submitForm = function()
-  {
-    var xhr = typeof XMLHttpRequest != 'undefined' ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-    xhr.onload = function(){ alert (xhr.responseText); }
-    xhr.open (oFormElement.method, oFormElement.action, true);
-    xhr.send (new FormData (oFormElement));
-    return false;
-  }
-  
+
   var setupJoin = function(){
     var join = document.getElementById('join');
     join.addEventListener('click', function(e){
       e.preventDefault();
       var list = document.getElementById('apList');
-      
-      var xhr = new XMLHttpRequest();   // new HttpRequest instance 
+      var pass = document.getElementById('password');
+
+      var xhr = new XMLHttpRequest();   // new HttpRequest instance
       xhr.open("POST", "configure");
       xhr.setRequestHeader("Content-Type", "application/json");
-      xhr.send(JSON.stringify({ssid:list.value, password: ''}));
-      
+      xhr.send(JSON.stringify({ssid:list.value, password: pass.value}));
+
       console.log(list.value);
       return false;
     })
   }
-  
+
   setupRefresh();
   setupJoin();
   loadAccessPoints();
+  loadCurrentNetwork();
 }
 
 document.addEventListener("DOMContentLoaded", ui);
+
