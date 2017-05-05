@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Headless Pi</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <div id="admin">
+    <div id="header">
+    Admin Apps <a href="#">x</a>
+    </div>
+    <div class="container">
+      <ul id="adminAppList">
+      {{#with apps}}
+        {{#each adminApps}}
+          <li><a href="/{{path}}">{{name}}</a></li>
+        {{/each}}
+      {{/with}}
+      </ul>
+      <div id="adminApp">
+        <iframe src=""></iframe>
+      </div>
+    </div>
+  </div>
+  
+  <div id="main">
+    <div id="sideNav">
+      <a href="/">Home</a>
+      <a href="#admin" id="adminLink">Admin</a>
+    </div>
+
+    <div id="content">
+    {{#> content-block}}
+    {{/content-block}}
+    </div>
+  </div>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
