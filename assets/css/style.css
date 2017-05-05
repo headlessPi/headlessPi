@@ -1,9 +1,3 @@
-#app body{
-  background: #EEE;
-  padding:0;
-  margin:0;
-}
-
 iframe.app{
   width:100%;
   height:100vh;
@@ -27,8 +21,31 @@ html, body{
 }
 
 #sideNav{
-  background: blue;
+  background:#333;
   box-flex: 0;
+  width:50px;
+  padding:20px 10px;
+  position:relative;
+}
+#sideNav path, #sideNav polygon{
+  fill:#999;
+}
+#sideNav a:hover path, #sideNav a:hover polygon{
+  fill:#AAA;
+}
+#sideNav a{
+  display:block;
+  margin-bottom: 20px;
+}
+#sideNav .logo{
+  color: #777;
+  font-size:200%;
+  display:block;
+  transform-origin:0 0;
+  transform: rotate(-90deg);
+  position:absolute;
+  bottom:-0.5em;
+  left:15px;
 }
 
 #content{
