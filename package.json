@@ -29,7 +29,7 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
-    "forever": "^0.15.3",
+    "forever-monitor": "^1.7.1",
     "github": "^9.2.0",
     "glob": "^7.1.1",
     "handlebars": "^4.0.8",

@@ -4,7 +4,9 @@
     <ul>
   {{#with apps}}
     {{#each apps}}
+      {{#unless background }}
       <li><a href="/{{path}}/">{{name}}</a></li>
+      {{/unless}}
     {{/each}}
   {{/with}}
     </ul>
