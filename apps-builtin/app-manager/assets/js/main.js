@@ -8,8 +8,8 @@ var ui = function(){
   }
 
   var setupManualInstall = function(){
-    var install = document.getElementById('install');
-    install.addEventListener('click', function(e){
+    var installButton = document.getElementById('install');
+    installButton.addEventListener('click', function(e){
       e.preventDefault();
       var repo = document.getElementById('manual').value;
       install(repo);
