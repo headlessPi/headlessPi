@@ -1,0 +1,13 @@
+{{#> master }}
+{{#*inline "content-block"}}
+  <div id="apps">
+    <ul>
+  {{#with apps}}
+    {{#each apps}}
+      <li><a href="/{{path}}/">{{name}}</a></li>
+    {{/each}}
+  {{/with}}
+    </ul>
+  </div>
+{{/inline}}
+{{/ master }}

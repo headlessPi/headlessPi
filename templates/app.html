@@ -1,29 +1,5 @@
-<!doctype html>
-
-<html lang="en" id="app">
-<head>
-  <meta charset="utf-8">
-
-  <title>Headless Pi</title>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-
-<body>
-  <div id="menu">
-    <a href="/">Home</a>
-  <div id="adminApps"><ul>
-  {{#with apps}}
-    {{#each adminApps}}
-      <li><a href="/{{path}}/">{{name}}</a></li>
-    {{/each}}
-  </ul></div>
-  <div id="apps"><ul>
-    {{#each apps}}
-      <li><a href="/{{path}}/">{{name}}</a></li>
-    {{/each}}
-  {{/with}}
-  </ul></div>
-  </div>
-  <iframe src="/a/{{appPath}}/"><?iframe>
-</body>
-</html>
+{{#> master }}
+{{#*inline "content-block"}}
+<iframe src="/a/{{appPath}}/" class="app"></iframe>
+{{/inline}}
+{{/ master }}

@@ -1,5 +1,5 @@
-var Installer = require('./installer').Installer;
-var installer = new Installer();
+var AppInstaller = require('../../lib/AppInstaller');
+var installer = new AppInstaller();
 
 
 var subApp = function(){

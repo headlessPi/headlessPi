@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/mimeindustries/headlessPi#readme",
   "devDependencies": {
+    "express-print-routes": "^1.0.0",
     "mocha": "^3.3.0"
   },
   "dependencies": {
