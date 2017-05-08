@@ -1,6 +1,7 @@
 var GitHubApi = require("github");
 var git = require('simple-git')('apps');
 var fs = require('fs');
+var child_process = require('child_process');
 
 var github = new GitHubApi({
     debug: false,
@@ -13,6 +14,19 @@ var github = new GitHubApi({
 });
 
 var Installer = function(){
+  var self = this;
+
+  this.setupNewApp = function(location, cb){
+    if(fs.existsSync('apps/' + location + '/manifest.json')){
+      var manifest = JSON.parse(fs.readFileSync('apps/' + location + '/manifest.json'));
+      if(typeof manifest.installcmd !== 'undefined'){
+        child_process.exec('cd apps/' + location + ' && ' + manifest.installcmd, (res) => {
+          cb();
+        });
+      }
+    }
+  }
+
   this.installApp = function(url, cb){
     const regex = /^https?\:\/\/github\.com\/([^\/]+)\/([^\/]+)/;
 
@@ -22,13 +36,16 @@ var Installer = function(){
         if(err) return cb(true);
         github.repos.getLatestRelease({owner: m[1], repo: m[2]}, function(err, releaseRes){
           if(err) return cb(true);
+          console.log(err);
           if(fs.existsSync('apps/' + m[2])) return cb(true)
           console.log("Download from " + repoRes.data.clone_url + " and checkout tag " + releaseRes.data.tag_name);
           git.clone(repoRes.data.clone_url, '_' + m[2])
              .cwd('apps/_' + m[2])
              .checkout(releaseRes.data.tag_name, () => {
-                fs.renameSync('apps/_' + m[2], 'apps/' + m[2]);
-                cb();
+                self.setupNewApp('_' + m[2], (err) => {
+                  fs.renameSync('apps/_' + m[2], 'apps/' + m[2]);
+                  cb();
+                })
           });
         })
       })
