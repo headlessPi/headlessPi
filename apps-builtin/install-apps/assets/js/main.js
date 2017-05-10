@@ -2,7 +2,7 @@ var ui = function(){
   var install = function(url){
     console.log("Installing " + url);
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "manualInstall");
+    xhr.open("POST", "install");
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(JSON.stringify({repository: url}));
   }

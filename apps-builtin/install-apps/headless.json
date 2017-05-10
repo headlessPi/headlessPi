@@ -1,6 +1,6 @@
 {
-  "name": "App Manager",
-  "path": "app-manager",
+  "name": "Install Apps",
+  "path": "install-apps",
   "type": "js",
   "entry": "index.js",
   "category": "admin"

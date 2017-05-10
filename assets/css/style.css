@@ -117,3 +117,30 @@ html, body{
 	display: flex;
 	flex:1;
 }
+
+div.app{
+  min-width:300px;
+  min-height:300px;
+  display:inline-block;
+  background:#999;
+  background-size:cover;
+  background-repeat:none;
+  margin:10px 0 0 10px;
+  position:relative;
+}
+
+div.app a{
+  background:#000;
+  font-size:230%;
+  color:#FFF;
+  text-decoration:none;
+  display:inline-block;
+  margin-top:60%;
+}
+
+div.app p{
+  text-align:right;
+  background:#FFF;
+  padding:3px;
+  margin:3px 0 0;
+}

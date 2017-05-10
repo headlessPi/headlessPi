@@ -1,0 +1,45 @@
+{{#> admin }}
+{{#*inline "content-block"}}
+  <div id="message"></div>
+  <div id="apps">
+  {{#with apps}}
+    {{#each apps}}
+      {{#unless background }}
+      <h3>{{name}}</h3>
+      <a href="#" class="update" data-app={{appid}}>Update</a> | <a href="#" class="remove" data-app="{{appid}}">Remove</a>
+      {{/unless}}
+    {{/each}}
+  {{/with}}
+  </div>
+  <script>
+
+var addClickHandler = function(selector, fn){
+  var sel = document.querySelectorAll(selector);
+  for(var i=0; i<sel.length; i++){
+    sel[i].addEventListener('click', function(e){
+      e.preventDefault();
+      fn(e);
+      return false;
+    });
+  }
+}
+
+addClickHandler('a.update', function(e){
+  var app = e.target.getAttribute('data-app');
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "update/" + app);
+  xhr.send();
+});
+
+addClickHandler('a.remove', function(e){
+  if(confirm("Are you sure you want to remove this app?")){
+    var app = e.target.getAttribute('data-app');
+    var xhr = new XMLHttpRequest();
+    xhr.open("DELETE", "remove/" + app);
+    xhr.send();
+  }
+});
+
+  </script>
+{{/inline}}
+{{/ admin }}

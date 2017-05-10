@@ -1,6 +1,6 @@
 {
-  "name": "Update",
-  "path": "update",
+  "name": "Manage Apps",
+  "path": "manage-apps",
   "type": "js",
   "entry": "index.js",
   "category": "admin"
