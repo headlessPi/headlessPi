@@ -1,16 +1,19 @@
 {{#> admin }}
 {{#*inline "content-block"}}
   <div id="message"></div>
-  <div id="apps">
+  <ul class="apps">
   {{#with apps}}
     {{#each apps}}
       {{#unless background }}
-      <h3>{{name}}</h3>
-      <a href="#" class="update" data-app={{appid}}>Update</a> | <a href="#" class="remove" data-app="{{appid}}">Remove</a>
+      <li>
+        <button class="update" data-app={{appid}}>Update</button> <button class="remove" data-app="{{appid}}">Remove</button>
+        <h2>{{name}}</h2>
+        <p>{{description}}</p>
+      </li>
       {{/unless}}
     {{/each}}
   {{/with}}
-  </div>
+  </ul>
   <script>
 
 var addClickHandler = function(selector, fn){

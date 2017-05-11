@@ -1,18 +1,6 @@
-<!doctype html>
-
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-
-  <title>WiFi Setup</title>
-  <style>
-a{
-  text-decoration:none;
-}
-  </style>
-</head>
-
-<body>
+{{#> admin }}
+{{#*inline "content-block"}}
+<div class="wifiSetup">
   Network: <select id="apList" disabled="disabled">
     <option>Loading Access Points...</option>
   </select>
@@ -20,7 +8,7 @@ a{
   Password: <input id="password" type="text" /><br>
   <button id="join">Join</button>
   <div id="status"></div>
-  <script src="js/main.js"></script>
-</body>
-</html>
-
+</div>
+<script src="js/main.js"></script>
+{{/inline}}
+{{/ admin }}

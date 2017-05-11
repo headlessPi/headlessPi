@@ -118,6 +118,29 @@ html, body{
 	flex:1;
 }
 
+.install{
+  height:100%;
+}
+.install{
+  display:flex;
+  flex-direction:column;
+  position:relative;
+}
+
+.install .window{
+  flex:1;
+}
+
+.install .manual{
+  padding:5px;
+}
+
+.admin iframe.appList{
+  border:none;
+  width:100%;
+  height:100%;
+}
+
 div.app{
   min-width:300px;
   min-height:300px;
@@ -143,4 +166,32 @@ div.app p{
   background:#FFF;
   padding:3px;
   margin:3px 0 0;
+}
+
+ul.apps{
+  margin:0;
+  padding:0;
+}
+ul.apps li{
+  list-style-type:none;
+  background:#DDD;
+  padding:10px;
+  margin:10px;
+}
+ul.apps h2, ul.apps p{
+  margin:0;
+  padding:0;
+}
+ul.apps h2{
+  font-size: 120%;
+}
+ul.apps button{
+  float: right;
+}
+.wifiSetup{
+  padding:10px;
+}
+.wifiSetup a{
+  text-decoration:none;
+  color:#000;
 }

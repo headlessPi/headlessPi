@@ -1,10 +1,20 @@
-WifiConfig = require('./wifiConfig').wifiConfig;
-wifiConfig = new WifiConfig();
+var WifiConfig = require('./wifiConfig').wifiConfig;
+var wifiConfig = new WifiConfig();
+var hb = require('handlebars');
+var fs = require('fs');
+const path = require('path');
 
 var subApp = function(){
   this.staticFolder = "assets";
 
   this.setup = function(router, express){
+
+    router.get('/', function(req, res) {
+      fs.readFile(path.join(__dirname, './index.html'), 'utf-8', function(error, source){
+        var template = hb.compile(source);
+        res.send(template())
+      });
+    });
 
     router.get('/accesspoints', function(req, res) {
       wifiConfig.listAccessPoints(function(err, list){
