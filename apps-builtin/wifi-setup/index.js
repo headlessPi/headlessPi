@@ -1,5 +1,4 @@
-var WifiConfig = require('./wifiConfig').wifiConfig;
-var wifiConfig = new WifiConfig();
+var wifiManager = require('../../lib/WifiManager');
 var hb = require('handlebars');
 var fs = require('fs');
 const path = require('path');
@@ -17,13 +16,13 @@ var subApp = function(){
     });
 
     router.get('/accesspoints', function(req, res) {
-      wifiConfig.listAccessPoints(function(err, list){
+      wifiManager.listAccessPoints(function(err, list){
         res.json({accesspoints: list});
       });
     });
 
     router.get('/status', function(req, res) {
-      wifiConfig.getStatus(function(err, status){
+      wifiManager.getStatus(function(err, status){
         if(!err){
           res.json(status);
         }else{
@@ -33,7 +32,7 @@ var subApp = function(){
     });
 
     router.post('/configure', function(req, res) {
-      wifiConfig.joinAccessPoint(req.body.ssid, req.body.password, (err) => {
+      wifiManager.joinAccessPoint(req.body.ssid, req.body.password, (err) => {
         console.log(err);
         if(!err){
           res.sendStatus(200);
