@@ -8,6 +8,14 @@
     {{/each}}
   {{/with}}
 
+  {{#unless apps.apps.length}}
+    <div class="app admin placeholder"><a href="#install-apps">Install some apps!</a></div>
+  {{/unless}}
+
+  {{#unless connected}}
+    <div class="app admin placeholder"><a href="#wifi-setup">Connect WiFi!</a></div>
+  {{/unless}}
+
 <script>
   var apps = document.querySelectorAll('div.app');
   for(var i=0; i<apps.length; i++){

@@ -150,6 +150,7 @@ div.app{
   background-repeat:none;
   margin:10px 0 0 10px;
   position:relative;
+  vertical-align:top;
 }
 
 div.app a{

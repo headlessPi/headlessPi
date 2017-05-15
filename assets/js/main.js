@@ -32,6 +32,22 @@ function setupLinks(){
     return false;
   });
 
+  var placeholderClickHandler = function(e){
+    var link = (e.target.nodeName === 'DIV' ? e.target.querySelector('a') : e.target);
+    if(link.hash){
+      var app = link.hash.replace('#', '');
+      document.querySelector('#admin').style.visibility = 'visible';
+      document.querySelector('#admin iframe').src = '/a/' + app;
+    }
+    e.preventDefault();
+    return false;
+  }
+
+  var placeholders = document.querySelectorAll('.placeholder.admin');
+  for(var i=0; i<placeholders.length; i++){
+    placeholders[i].addEventListener('click', placeholderClickHandler);
+  }
+
   var closeLink = document.querySelector('#admin #header a');
   closeLink.addEventListener('click', function(e){
     document.querySelector('#admin iframe').src = '';
