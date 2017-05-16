@@ -27,18 +27,42 @@ var addClickHandler = function(selector, fn){
   }
 }
 
-addClickHandler('a.update', function(e){
+addClickHandler('button.update', function(e){
   var app = e.target.getAttribute('data-app');
+  e.target.innerHTML = "Updating...";
+  e.target.disabled = true;
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "update/" + app);
+    xhr.addEventListener('load', () => {
+      if(xhr.status === 200){
+        e.target.innerHTML = "Updating";
+      }else{
+        document.getElementById('message').innerHTML = xhr.response;
+        document.getElementById('message').style.display = "block";
+        e.target.innerHTML = "Update";
+        e.target.disabled = false;
+      }
+    });
   xhr.send();
 });
 
-addClickHandler('a.remove', function(e){
+addClickHandler('button.remove', function(e){
   if(confirm("Are you sure you want to remove this app?")){
+    e.target.innerHTML = "Removing...";
+    e.target.disabled = true;
     var app = e.target.getAttribute('data-app');
     var xhr = new XMLHttpRequest();
     xhr.open("DELETE", "remove/" + app);
+    xhr.addEventListener('load', () => {
+      if(xhr.status === 200){
+        e.target.innerHTML = "Removed";
+      }else{
+        document.getElementById('message').innerHTML = xhr.response;
+        document.getElementById('message').style.display = "block";
+        e.target.innerHTML = "Remove";
+        e.target.disabled = false;
+      }
+    });
     xhr.send();
   }
 });

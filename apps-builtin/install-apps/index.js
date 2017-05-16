@@ -16,7 +16,11 @@ var subApp = function(){
 
    router.post('/install', function(req, res) {
       manager.installApp(req.body.repository, (err) => {
-        res.sendStatus(err ? 500 : 200);
+        if(err){
+          res.status(500).send(err);
+        }else{
+          res.send(200);
+        }
       });
     });
   }

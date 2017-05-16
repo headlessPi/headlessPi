@@ -196,3 +196,10 @@ ul.apps button{
   text-decoration:none;
   color:#000;
 }
+#message{
+  margin:10px;
+  background: #DDD;
+  display:none;
+  padding:5px;
+  color:#F66;
+}

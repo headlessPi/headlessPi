@@ -26,9 +26,7 @@ var subApp = function(){
     })
 
     router.delete('/remove/:app', (req, res) => {
-      console.log("Removing app: ", req.params.app);
       manager.removeApp(req.params.app, (err) => {
-        console.log("Removed");
         if(err){
           res.status(500).send(err);
         }else{
