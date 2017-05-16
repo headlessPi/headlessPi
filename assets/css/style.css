@@ -142,7 +142,7 @@ html, body{
 }
 
 div.app{
-  min-width:300px;
+  width:300px;
   min-height:300px;
   display:inline-block;
   background:#999;
@@ -167,6 +167,24 @@ div.app p{
   background:#FFF;
   padding:3px;
   margin:3px 0 0;
+}
+
+div.app.placeholder{
+  background-color:transparent;
+  background-size:cover;
+  background-repeat: no-repeat;
+}
+div.app.placeholder a{
+  background: #000;
+  opacity:0.6;
+}
+
+.placeholder.apps{
+  background-image:url('/svg/plus.svg');
+}
+
+.placeholder.wifi{
+  background-image:url('/svg/wifi.svg');
 }
 
 ul.apps{
