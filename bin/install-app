@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+
+var AppManager = require('../lib/AppManager.js');
+var appManager = new AppManager();
+
+if(process.argv.length === 3){
+  var app = process.argv[2];
+  console.log("Installing app: " + app);
+
+  appManager.installApp(app, (err) => {
+    if(!err){
+      console.log("App installed successfully");
+      process.exit(0);
+    }else{
+      console.log("Error installing app");
+      process.exit(1);
+    }
+  });
+}else{
+  process.exit(1);
+}
