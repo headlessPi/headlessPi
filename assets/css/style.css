@@ -187,24 +187,24 @@ div.app.placeholder a{
   background-image:url('/svg/wifi.svg');
 }
 
-ul.apps{
+ul.elemList{
   margin:0;
   padding:0;
 }
-ul.apps li{
+ul.elemList li{
   list-style-type:none;
   background:#DDD;
   padding:10px;
   margin:10px;
 }
-ul.apps h2, ul.apps p{
+ul.elemList h2, ul.elemList p{
   margin:0;
   padding:0;
 }
-ul.apps h2{
+ul.elemList h2{
   font-size: 120%;
 }
-ul.apps button{
+ul.elemList button{
   float: right;
 }
 .wifiSetup{

@@ -1,0 +1,55 @@
+{{#> admin }}
+{{#*inline "content-block"}}
+<ul class="elemList">
+  <li>
+    <button class="update">Update</button>
+    <h2>System Update</h2>
+    <p>Update the headlessPi system</p>
+  </li>
+  <li>
+    <button class="updateFull">Full Update</button>
+    <h2>Full System Update</h2>
+    <p>Update the headlessPi system and the installed packages on the operating system. Warning: may cause system instability.</p>
+  </li>
+</ul>
+<script>
+
+var addClickHandler = function(selector, fn){
+  var sel = document.querySelectorAll(selector);
+  for(var i=0; i<sel.length; i++){
+    sel[i].addEventListener('click', function(e){
+      e.preventDefault();
+      fn(e);
+      return false;
+    });
+  }
+}
+
+var remote_button = function(options){
+  return function(e){
+    e.target.innerHTML = options.active_msg;
+    e.target.disabled = true;
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", options.url);
+      xhr.addEventListener('load', () => {
+        if(xhr.status === 200){
+          e.target.innerHTML = options.success_msg;
+        }else{
+          document.getElementById('message').innerHTML = xhr.response;
+          document.getElementById('message').style.display = "block";
+          e.target.innerHTML = options.default_msg;
+          e.target.disabled = false;
+        }
+      });
+    xhr.send();
+  }
+}
+
+addClickHandler('button.update', remote_button({active_msg: "Updating...", url: 'update/', success_msg: "Updated", default_msg: "Update"}));
+addClickHandler('button.updateFull', remote_button({active_msg: "Updating...", url: 'update/?full=true', success_msg: "Updated", default_msg: "Update"}));
+
+</script>
+
+{{/inline}}
+{{/ admin }}
+

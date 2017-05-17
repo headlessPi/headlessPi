@@ -1,0 +1,7 @@
+{
+  "name": "System Update",
+  "path": "system-update",
+  "type": "js",
+  "entry": "index.js",
+  "category": "admin"
+}
