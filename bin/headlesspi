@@ -12,3 +12,13 @@ var child = new (forever.Monitor)('server.js', {
 
 child.start();
 
+var shutdown = function(){
+  console.log("Stopping Process");
+  child.stop();
+  setTimeout(() => {
+    process.exit(0);
+  }, 1000);
+}
+
+process.on('SIGTERM', shutdown);
+
