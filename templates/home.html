@@ -20,9 +20,13 @@
   var apps = document.querySelectorAll('div.app');
   for(var i=0; i<apps.length; i++){
     var a = apps[i].querySelector('a');
-    apps[i].addEventListener('click', function(e){
-      window.location = a.href;
-    })
+    (function(href, app){
+      console.log(app);
+      console.log(href);
+      app.addEventListener('click', function(e){
+        window.location = href;
+      })
+    })(a.href, apps[i]);
   }
 </script>
 
