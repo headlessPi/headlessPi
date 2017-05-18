@@ -56,6 +56,8 @@ var ui = function(){
       xhr.setRequestHeader("Content-Type", "application/json");
       xhr.send(JSON.stringify({ssid:list.value, password: pass.value}));
 
+      document.querySelector('div.wifiSetup').style.display = 'none';
+      document.querySelector('div.message').style.display = 'block';
       return false;
     })
   }
