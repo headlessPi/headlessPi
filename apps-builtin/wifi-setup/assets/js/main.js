@@ -56,7 +56,6 @@ var ui = function(){
       xhr.setRequestHeader("Content-Type", "application/json");
       xhr.send(JSON.stringify({ssid:list.value, password: pass.value}));
 
-      console.log(list.value);
       return false;
     })
   }

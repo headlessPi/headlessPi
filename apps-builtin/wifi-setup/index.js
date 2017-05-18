@@ -32,14 +32,8 @@ var subApp = function(){
     });
 
     router.post('/configure', function(req, res) {
-      wifiManager.joinAccessPoint(req.body.ssid, req.body.password, (err) => {
-        console.log(err);
-        if(!err){
-          res.sendStatus(200);
-        }else{
-          res.sendStatus(500);
-        }
-      });
+      wifiManager.joinAccessPoint(req.body.ssid, req.body.password);
+      res.sendStatus(200);
     });
 
   }
