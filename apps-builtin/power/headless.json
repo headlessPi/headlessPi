@@ -1,0 +1,7 @@
+{
+  "name": "Power Control",
+  "path": "power",
+  "type": "js",
+  "entry": "index.js",
+  "category": "admin"
+}

@@ -1,0 +1,57 @@
+{{#> admin }}
+{{#*inline "content-block"}}
+<div id="message"></div>
+<ul class="elemList">
+  <li>
+    <button class="reboot">Reboot</button>
+    <h2>Reboot</h2>
+    <p>Reboot the Raspberry Pi system</p>
+  </li>
+  <li>
+    <button class="shutdown">Shutdown</button>
+    <h2>Shutdown</h2>
+    <p>Shutdown the Raspberry Pi system</p>
+  </li>
+</ul>
+<script>
+
+var addClickHandler = function(selector, fn){
+  var sel = document.querySelectorAll(selector);
+  for(var i=0; i<sel.length; i++){
+    sel[i].addEventListener('click', function(e){
+      e.preventDefault();
+      fn(e);
+      return false;
+    });
+  }
+}
+
+var power_button = function(options){
+  return function(e){
+    if(confirm(options.confirm_msg)){
+      e.target.disabled = true;
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", options.url);
+        xhr.addEventListener('load', () => {
+          if(xhr.status === 200){
+            document.getElementById('message').innerHTML = "System going down";
+            document.getElementById('message').style.display = "block";
+          }else{
+            document.getElementById('message').innerHTML = xhr.response;
+            document.getElementById('message').style.display = "block";
+            e.target.disabled = false;
+          }
+        });
+      xhr.send();
+    }
+  }
+}
+
+addClickHandler('button.reboot', power_button({confirm_msg: "Are you sure you want to reboot your Raspberry Pi?", url: 'reboot/'}));
+addClickHandler('button.shutdown', power_button({active_msg: "Are you sure you want to shut down your Raspberry Pi?", url: 'shutdown/'}));
+
+</script>
+
+{{/inline}}
+{{/ admin }}
+
