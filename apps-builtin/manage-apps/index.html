@@ -4,13 +4,11 @@
   <ul class="elemList">
   {{#with apps}}
     {{#each apps}}
-      {{#unless background }}
       <li>
         <button class="update" data-app={{appid}}>Update</button> <button class="remove" data-app="{{appid}}">Remove</button>
         <h2>{{name}}</h2>
         <p>{{description}}</p>
       </li>
-      {{/unless}}
     {{/each}}
   {{/with}}
   </ul>
