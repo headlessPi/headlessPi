@@ -48,7 +48,7 @@ var power_button = function(options){
 }
 
 addClickHandler('button.reboot', power_button({confirm_msg: "Are you sure you want to reboot your Raspberry Pi?", url: 'reboot/'}));
-addClickHandler('button.shutdown', power_button({active_msg: "Are you sure you want to shut down your Raspberry Pi?", url: 'shutdown/'}));
+addClickHandler('button.shutdown', power_button({confirm_msg: "Are you sure you want to shut down your Raspberry Pi?", url: 'shutdown/'}));
 
 </script>
 
