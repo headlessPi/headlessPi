@@ -1,0 +1,14 @@
+[Unit]
+Description=A Node.js app to control your Pi over the network
+After=network.target
+ 
+[Service]
+WorkingDirectory=/usr/local/headlesspi
+ExecStart=/usr/local/headlesspi/bin/headlesspi
+StandardOutput=syslog+console
+StandardError=syslog+console
+Type=simple
+ 
+[Install]
+WantedBy=multi-user.target
+Alias=headlesspi
