@@ -1,0 +1,22 @@
+#!/usr/bin/make -f
+
+DISTRIBUTION = $(shell lsb_release -sr)
+VERSION = 0.1.2
+PACKAGEVERSION = 0.1.2
+INSTALLDIR = debian/headlesspi/usr/local/headlesspi/framework
+
+%:
+	dh $@
+
+override_dh_auto_clean:
+	rm -rf debian/headlesspi
+override_dh_auto_test:
+override_dh_usrlocal:
+override_dh_auto_build:
+override_dh_auto_install:
+	mkdir -p $(INSTALLDIR)
+	rsync -av . $(INSTALLDIR) --exclude debian --exclude .git --exclude .gitignore --exclude node_modules
+	cd $(INSTALLDIR) &&	npm install --production
+
+override_dh_gencontrol:
+	dh_gencontrol -- -v$(PACKAGEVERSION = 0.1.2
