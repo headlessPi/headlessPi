@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]
+then
+  echo "Usage: push-deb <filename>"
+  exit 1
+fi
+
+DEBFILE=$1
+
+if [ ! -v PACKAGECLOUD_TOKEN ]
+then
+	echo "Set PACKAGECLOUD_TOKEN env variable first"
+  exit 1
+fi
+
+curl -X POST https://packagecloud.io/api/v1/repos/mimeindustries/headlesspi/packages.json \
+-u ${PACKAGECLOUD_TOKEN}: \
+-F "package[distro_version_id]=155" \
+-F "package[package_file]=@${DEBFILE}"

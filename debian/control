@@ -4,4 +4,4 @@ Maintainer: Ben Pirt <ben.pirt@mime.co.uk>
 Package: headlesspi
 Architecture: armhf
 Description: A framework to allow easy control of your Raspberry Pi over the network
-Depends: nodejs (>= 4.8.2)
+Depends: nodejs (>= 4)

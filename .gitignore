@@ -3,5 +3,6 @@ apps
 config.json
 routes.txt
 debian/headlesspi*
+!debian/headlesspi.service
 debian/files
 debian/debhelper*
