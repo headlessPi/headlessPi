@@ -12,10 +12,11 @@
     <div class="app admin placeholder apps"><a href="#install-apps">Install apps!</a></div>
   {{/unless}}
 
-  {{#unless connected}}
-    <div class="app admin placeholder wifi"><a href="#wifi-setup">Connect WiFi!</a></div>
-  {{/unless}}
-
+  {{#if wifiConfig}}
+    {{#unless connected}}
+      <div class="app admin placeholder wifi"><a href="#wifi-setup">Connect WiFi!</a></div>
+    {{/unless}}
+  {{/if}}
 <script>
   var apps = document.querySelectorAll('div.app');
   for(var i=0; i<apps.length; i++){
