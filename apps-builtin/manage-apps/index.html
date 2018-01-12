@@ -33,7 +33,8 @@ addClickHandler('button.update', function(e){
   xhr.open("POST", "update/" + app);
     xhr.addEventListener('load', () => {
       if(xhr.status === 200){
-        e.target.innerHTML = "Updating";
+        e.target.innerHTML = "Updated";
+        e.target.disabled = false;
       }else{
         document.getElementById('message').innerHTML = xhr.response;
         document.getElementById('message').style.display = "block";

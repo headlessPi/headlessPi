@@ -1,7 +1,6 @@
 var hb = require('handlebars');
 var fs = require('fs');
-var AppManager = require('../../lib/AppManager');
-var manager = new AppManager();
+var appManager = require('../../lib/AppManager');
 const path = require('path');
 
 var subApp = function(){
@@ -9,14 +8,14 @@ var subApp = function(){
     router.get('/', function(req, res) {
       fs.readFile(path.join(__dirname, './index.html'), 'utf-8', function(error, source){
         var template = hb.compile(source);
-        manager.getApps((apps) => {
+        appManager.getApps((apps) => {
           res.send(template({apps: apps}))
         })
       });
     });
 
     router.post('/update/:app', (req, res) => {
-      manager.updateApp(req.params.app, (err) => {
+      appManager.updateApp(req.params.app, (err) => {
         if(err){
           res.status(500).send(err);
         }else{
@@ -26,7 +25,7 @@ var subApp = function(){
     })
 
     router.delete('/remove/:app', (req, res) => {
-      manager.removeApp(req.params.app, (err) => {
+      appManager.removeApp(req.params.app, (err) => {
         if(err){
           res.status(500).send(err);
         }else{

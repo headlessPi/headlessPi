@@ -1,5 +1,4 @@
-var AppManager = require('../../lib/AppManager');
-var manager = new AppManager();
+var appManager = require('../../lib/AppManager');
 var hb = require('handlebars');
 var fs = require('fs');
 const path = require('path');
@@ -15,11 +14,11 @@ var subApp = function(){
     });
 
    router.post('/install', function(req, res) {
-      manager.installApp(req.body.repository, (err) => {
+      appManager.installApp(req.body.pkg, (err) => {
         if(err){
           res.status(500).send(err);
         }else{
-          res.send(200);
+          res.sendStatus(200);
         }
       });
     });

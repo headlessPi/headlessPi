@@ -27,13 +27,12 @@
     "mocha": "^3.3.0"
   },
   "dependencies": {
+    "apt": "0.0.2",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "forever-monitor": "^1.7.1",
-    "github": "^9.2.0",
     "glob": "^7.1.1",
     "handlebars": "^4.0.8",
-    "simple-git": "^1.70.0",
     "wireless-tools": "git+https://git@github.com/headlessPi/wireless-tools.git",
     "wpa-supplicant-conf": "^0.1.7"
   }

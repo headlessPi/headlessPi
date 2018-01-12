@@ -1,6 +1,5 @@
-var AppManager = require('../../lib/AppManager');
+var manager = require('../../lib/AppManager');
 var SystemUpdate = require('../../lib/SystemUpdate');
-var manager = new AppManager();
 var hb = require('handlebars');
 var fs = require('fs');
 const path = require('path');

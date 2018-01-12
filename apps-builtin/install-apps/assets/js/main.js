@@ -4,7 +4,7 @@ var ui = function(){
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "install");
     xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify({repository: url}));
+    xhr.send(JSON.stringify({pkg: url}));
     xhr.addEventListener('load', () => {
       if(xhr.status === 200){
         cb();
@@ -26,7 +26,7 @@ var ui = function(){
 
   var receiveMessage = function(e){
     if(e.data && e.data.install){
-      install(e.data.install, (err) => {
+      install(e.data.pkg, (err) => {
         var resp = {id: e.data.id};
         if(err) resp.err = err;
         e.source.postMessage(resp, '*');
@@ -38,7 +38,7 @@ var ui = function(){
     window.addEventListener("message", receiveMessage, false);
   }
 
-  setupManualInstall();
+  //setupManualInstall();
   setupWebInstall();
 }
 
