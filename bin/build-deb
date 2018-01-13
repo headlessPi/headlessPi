@@ -1,5 +1,4 @@
 #!/bin/bash
 
-VERSION=$(node -p "require('./package.json').version.replace(/\./g, '\\\.')")
-sed -i s/^VERSION.*/VERSION\ \=\ $VERSION/ debian/rules
+export VERSION=$(node -p "require('./package.json').version")
 dpkg-buildpackage -us -uc -b
