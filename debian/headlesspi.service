@@ -3,8 +3,8 @@ Description=A Node.js app to control your Pi over the network
 After=network.target
 
 [Service]
-WorkingDirectory=/usr/local/headlesspi/framework
-ExecStart=/usr/local/headlesspi/framework/bin/headlesspi
+WorkingDirectory=/opt/headlesspi/framework
+ExecStart=/opt/headlesspi/framework/bin/headlesspi
 StandardOutput=syslog+console
 StandardError=syslog+console
 Type=simple
