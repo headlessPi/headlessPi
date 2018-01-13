@@ -1,24 +1,7 @@
-#!/usr/bin/env node
+#!/usr/bin/env nodejs
 
-var forever = require('forever-monitor');
+var HeadlessPi = require('../lib/index.js');
+var app = new HeadlessPi();
 
-var child = new (forever.Monitor)('server.js', {
-  silent: false,
-  watch:true,
-  watchDirectory: 'apps',
-  watchIgnorePatterns: ['_*'],
-  args: []
-});
-
-child.start();
-
-var shutdown = function(){
-  console.log("Stopping Process");
-  child.stop();
-  setTimeout(() => {
-    process.exit(0);
-  }, 1000);
-}
-
-process.on('SIGTERM', shutdown);
+app.start();
 
