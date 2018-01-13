@@ -14,6 +14,13 @@ then
   exit 1
 fi
 
+if [ $DEBFILE == "latest" ]
+then
+  DEBFILE="../$(grep -oP ".*\.deb" debian/files)"
+fi
+
+echo "Pushing $DEBFILE"
+
 curl -X POST https://packagecloud.io/api/v1/repos/mimeindustries/headlesspi/packages.json \
 -u ${PACKAGECLOUD_TOKEN}: \
 -F "package[distro_version_id]=155" \
