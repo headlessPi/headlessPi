@@ -3,13 +3,14 @@
 DISTRIBUTION = $(shell lsb_release -sr)
 #VERSION= <passed in by VERSION environment variable>
 PACKAGEVERSION = $(VERSION)
-INSTALLDIR = debian/headlesspi/usr/local/headlesspi/framework
+APPNAME=headlesspi
+INSTALLDIR = debian/${APPNAME}/opt/${APPNAME}/framework
 
 %:
 	dh $@
 
 override_dh_auto_clean:
-	rm -rf debian/headlesspi
+	rm -rf debian/${APPNAME}
 override_dh_auto_test:
 override_dh_usrlocal:
 override_dh_auto_build:
