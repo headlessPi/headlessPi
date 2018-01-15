@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Make sure this service starts automatically
+systemctl start headlesspi
