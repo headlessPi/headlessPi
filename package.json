@@ -1,6 +1,6 @@
 {
   "name": "headlesspi",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A framework to easily enable we based apps to run on a Raspberry Pi without needing to plug it in to a monitor",
   "main": "lib/index.js",
   "scripts": {
